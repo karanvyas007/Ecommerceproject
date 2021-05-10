@@ -1,0 +1,38 @@
+{% extends 'header.html' %}
+{% load static %}
+{% block header %}
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      
+   </head>
+   <!-- body -->
+   <body class="main-layout">
+	<div class="layout_padding gallery_section">
+      <div class="container">
+        <div class="row">
+          {% for i  in order_carts %}
+          <div class="col-sm-4">
+            <div class="best_shoes">
+              <p class="best_text">Best Shoes </p>
+              <div class="shoes_icon"><img src="{{i.product.product_image.url}}" height="300px" width="300px"></div>
+              <div class="star_text">
+                
+                <div>
+                  <div class="shoes_price">Amount Paid Rs.  <span style="color: #ff4e5b;">{{i.total_price}}</span></div>
+                </div>
+              </div>
+              <div>
+                <a href="{% url 'user_product_detail' pk=i.product.pk %}" style="margin-left:120px; font-size: 20px; "><button class="btn btn-primary">More Details</button></a>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+        
+      </div>
+    </div>
+	
+   </body>
+</html>
+{% endblock %}

@@ -1,0 +1,58 @@
+{% extends 'header.html' %}
+{% load static %}
+{% block header %}
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      
+   </head>
+   <!-- body -->
+   <body class="main-layout">
+	<div class="layout_padding gallery_section">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-8">
+            <div class="best_shoes">
+              <p class="best_text">{{product.product_brand}} :- {{product.product_category}} </p>
+              <div class="shoes_icon"><img src="{{product.product_image.url}}" height="300px" width="300px"></div>
+              <div class="star_text">
+                <div class="left_part">
+                  <ul>
+                      <li><a href="#"><img src="{% static 'images/star-icon.png' %}"></a></li>
+                      <li><a href="#"><img src="{% static 'images/star-icon.png' %}"></a></li>
+                      <li><a href="#"><img src="{% static 'images/star-icon.png' %}"></a></li>
+                      <li><a href="#"><img src="{% static 'images/star-icon.png' %}"></a></li>
+                      <li><a href="#"><img src="{% static 'images/star-icon.png' %}"></a></li>
+                    </ul>
+                </div>
+                <div class="right_part">
+                  <div class="shoes_price">Rs.  <span style="color: #ff4e5b;">{{product.product_price}}</span></div>
+                </div>
+              </div>
+              <div>
+                <p>Price : {{product.product_price}}<br>
+                  Color : {{product.product_color}}<br>
+                  Size  : {{product.product_size}}<br></p>
+                <p>Description :=> {{product.product_description}}</p>                
+                  
+                  {% if flag1 == True %}
+                    <a href="{% url 'remove_from_cart' pk=product.pk %}" style="margin-left:20px; font-size: 20px; "><button class="btn btn-primary">Remove From Cart</button></a> 
+                  {% else %}
+                    <a href="{% url 'add_to_cart' pk=product.pk %}" style="margin-left:20px; font-size: 20px; "><button class="btn btn-primary">Add To Cart</button></a>                
+                  {% endif %}
+                   
+                  {% if flag == True %}
+                    <a href="{% url 'remove_from_wishlist' pk=product.pk %}" style="margin-left:20px; font-size: 20px; "><button class="btn btn-primary">Remove From Wishlist</button></a> 
+                  {% else %}
+                    <a href="{% url 'add_To_wishlist' pk=product.pk %}" style="margin-left:20px; font-size: 20px; "><button class="btn btn-primary">Add To Wishlist</button></a>                
+                  {% endif %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+	
+   </body>
+</html>
+{% endblock %}

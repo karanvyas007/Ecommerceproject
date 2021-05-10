@@ -1,0 +1,66 @@
+{% extends 'header.html' %}
+{% load static %}
+{% block header %}
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+     
+   </head>
+   <!-- body -->
+   <body class="main-layout">
+	<!-- header section start -->
+	 	<!-- contact section start -->
+    <div class="collection_text">Enter Email</div>
+    <div class="layout_padding contact_section">
+    	<div class="container">
+    		<h1 class="new_text"><strong>Enter Email</strong></h1>
+        {% if msg %}
+          <b>{{msg}}</b>
+        {% endif %}
+    	</div>
+
+    	<div class="container-fluid ram">
+    		<div class="row">
+    			<div class="col-md-6">
+    				<div class="email_box">
+                    <div class="input_main">
+                       <div class="container">
+                          <form name="enter_email" method="post" action="{% url 'enter_email' %}">
+                            {% csrf_token %}
+                            <tr>
+                              <td>Enter Email</td>
+                              <td><input type="email" name="email"></td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                  <input type="submit" name="action" value="Send OTP" class="btn btn-danger">
+                                </td>
+                            </tr>
+                            
+                            
+                            
+                           
+                          </form>  
+                       </div>                                          
+                    </div>
+
+    		</div>
+
+    			</div>
+
+    			<div class="col-md-6">
+    				<div class="shop_banner">
+    					<div class="our_shop">
+    						<button class="out_shop_bt">Our Shop</button>
+    					</div>
+    				</div>
+    			</div>
+    		</div>
+    	</div>
+    </div>
+   	<!-- contact section end -->
+	
+   </body>
+</html>
+{% endblock %}
